@@ -1,0 +1,59 @@
+<template >
+
+    <lightning-card  title="Covid App">
+        <lightning-button-icon-stateful slot="actions" icon-name="utility:sort" selected={sortState} onclick={handleLikeButtonClick} alternative-text="Like">By Total Confirmed Descending </lightning-button-icon-stateful>
+        <p class="slds-p-horizontal_small">Made By Ronak Toshniwal</p>
+        
+    <header class="head" >
+        <main class="sub" >
+            <div class="one"><p> Total Confirmed</p> {global.TotalConfirmed}</p></div>
+            <div class="two"><p> New Confirmed</p> {global.NewConfirmed}</p></div>
+            <div class="three"><p> Total Recovered</p> {global.TotalRecovered}</p></div>
+            <div class="four"><p> Total Deaths</p>{global.TotalDeaths}</p></div>
+        </main>
+        
+    </header>
+    <main>
+        <section class="sec">
+            <nav class="head">
+                <p>Country</p>
+                <p>New Confirmed</p>
+                <p>Total Confirmed</p>
+                <p>New Deaths</p>
+                <p>Total Deaths</p>
+                <p>New Recovered</p>
+                <p>Total Recovered</p>
+            </nav>
+        
+            
+            <template for:each={Asc} for:item="t">
+                <nav key={t.Country} if:true={sortState} class="dataText">
+                       <p key={t.Country}>{t.Country}</p>
+                        <p key={t.Country}>{t.NewConfirmed}</p>
+                       <p key={t.Country}>{t.TotalConfirmed}</p>
+                       <p key={t.Country}>{t.NewDeaths}</p>
+                       <p key={t.Country}>{t.TotalDeaths}</p>
+                       <p key={t.Country}>{t.NewRecovered}</p>
+                       <p key={t.Country}>{t.TotalRecovered}</p>
+                </nav>
+                
+            </template>
+            <template for:each={Desc} for:item="t">
+                <nav key={t.Country} if:false={sortState}>
+                       <p key={t.Country}>{t.Country}</p>
+                        <p key={t.Country}>{t.NewConfirmed}</p>
+                       <p key={t.Country}>{t.TotalConfirmed}</p>
+                       <p key={t.Country}>{t.NewDeaths}</p>
+                       <p key={t.Country}>{t.TotalDeaths}</p>
+                       <p key={t.Country}>{t.NewRecovered}</p>
+                       <p key={t.Country}>{t.TotalRecovered}</p>
+                </nav>
+                
+            </template>
+    
+    
+        </section>
+    </main>
+
+</lightning-card>
+</template>
